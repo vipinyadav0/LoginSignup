@@ -1,0 +1,48 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+
+    <link rel="stylesheet" href="{% static 'css/main.css'%}">
+    <link rel="stylesheet" href= 
+"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> 
+</head>
+<body>
+    <div class="main-div">
+        <h1>Login</h1>
+
+        <form class="form" method="post" action="{% url 'login' %}">
+            {% csrf_token %}
+            <div class="text-field">    
+                <input type="text" name="username" required>
+                <span></span>
+                <label for="">Username</label>
+            </div>
+            <div class="text-field">
+                <input type="text" name="password" required>
+                <span></span>
+                <label for="">Password</label>
+            </div>
+            <div class="remember">
+            <input type="checkbox">
+            <label for="">Remember Me</label>
+            </div>
+            <input type="submit" name="login" id="" value="Login">
+            <div class="password">Forgot Password?</div>
+
+            <p>{{ form.errors}} </p>
+
+            {% for message in messages %}
+            <p class="message">{{ message}}</p>
+            {% endfor %}
+
+            <div class="signup">Don't have an account? <a href="{% url 'signup' %}">Signup</a></div>
+
+        </form>
+    </div>
+</body>
+</html>
